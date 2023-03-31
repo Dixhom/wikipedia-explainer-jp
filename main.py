@@ -165,19 +165,20 @@ def get_chatgpt_content(keyword, speaker1, speaker2):
     openai.api_key = get_openai_apikey()
 
     content = '''# 指示
-    ウィキペディアから「{0}」を検索して、その内容を{1}と{2}という二人の女性が質問と回答を繰り返す対話形式で説明してください。
-    挨拶は不要です。敬語は不要です。ですます調は不要です。二人は親友のように会話します。出力はjson形式にしてください。
+ウィキペディアから「{0}」を検索して、その内容を{1}と{2}という二人の女性が質問と回答を繰り返す対話形式で説明してください。
+挨拶は不要です。敬語は不要です。ですます調は不要です。二人は親友のように会話します。
+会話は読者が楽しめるようにできるだけ面白くしてください。出力はjson形式にしてください。
 
-    # json形式
-    [
-        {{"speaker": 女性, "comment": 会話内容}},
-        {{"speaker": 女性, "comment": 会話内容}},
-        {{"speaker": 女性, "comment": 会話内容}},
-        {{"speaker": 女性, "comment": 会話内容}}        
-    ]
+# json形式
+[
+    {{"speaker": 女性, "comment": 会話内容}},
+    {{"speaker": 女性, "comment": 会話内容}},
+    {{"speaker": 女性, "comment": 会話内容}},
+    {{"speaker": 女性, "comment": 会話内容}}        
+]
 
-    # 出力
-    '''.format(keyword, speaker1, speaker2)
+# 出力
+'''.format(keyword, speaker1, speaker2)
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
